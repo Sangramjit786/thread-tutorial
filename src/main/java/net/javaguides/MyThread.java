@@ -2,9 +2,9 @@ package net.javaguides;
 
 public class MyThread extends Thread{
 
-//    public MyThread(String name) {
-//        super(name);
-//    }
+    public MyThread(String name) {
+        super(name);
+    }
 
     @Override
     public void run() {
@@ -36,11 +36,16 @@ public class MyThread extends Thread{
 //
 //            }
 //        }
-        try{
-            Thread.sleep(1000);
-            System.out.println("Thread is running.....");
-        } catch (InterruptedException e) {
-            System.out.println("Thread interrupted: " + e);
+//        try{
+//            Thread.sleep(1000);
+//            System.out.println("Thread is running.....");
+//        } catch (InterruptedException e) {
+//            System.out.println("Thread interrupted: " + e);
+//        }
+
+        for (int i = 0; i < 5; i++){
+            System.out.println(Thread.currentThread().getName() + " is running");
+            Thread.yield();
         }
     }
 
@@ -67,10 +72,12 @@ public class MyThread extends Thread{
 //        l.start();
 //        m.start();
 //        h.start();
-        MyThread t1 = new MyThread();
+        MyThread t1 = new MyThread("t1");
+        MyThread t2 = new MyThread("t2");
         t1.start();
-        t1.interrupt();
+        t2.start();
+//        t1.interrupt();
     }
 }
 
-// start(), run(), sleep(), join(), setPriority(), Interrupt
+// start(), run(), sleep(), join(), setPriority(), Interrupt, yield
