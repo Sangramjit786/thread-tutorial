@@ -6,13 +6,27 @@ public class Test {
 //        world.start();
 //        Thread t1 = new Thread(world);
 //        t1.start();
-        World t1 = new World(); //NEW
-        t1.start(); //RUNNABLE
+//        World t1 = new World(); //NEW
+//        t1.start(); //RUNNABLE
+//
+//        System.out.println(Thread.currentThread().getName());
+//
+//        for(; ; ){
+//            System.out.println("Hello");
+//        }
+        Counter counter = new Counter();
+        MyThread t1 = new MyThread(counter);
+        MyThread t2 = new MyThread(counter);
+        t1.start();
+        t2.start();
 
-        System.out.println(Thread.currentThread().getName());
+        try{
+            t1.join();
+            t2.join();
+        } catch (Exception e) {
 
-        for(; ; ){
-            System.out.println("Hello");
         }
+
+        System.out.println(counter.getCount());
     }
 }

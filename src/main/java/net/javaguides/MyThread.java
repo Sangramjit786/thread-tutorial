@@ -6,8 +6,8 @@ public class MyThread extends Thread{
 //        super(name);
 //    }
 
-    @Override
-    public void run() {
+//    @Override
+//    public void run() {
 //        System.out.println("Thread is running....");
 //        try {
 //            Thread.sleep(2000);
@@ -47,12 +47,12 @@ public class MyThread extends Thread{
 //            System.out.println(Thread.currentThread().getName() + " is running");
 //            Thread.yield();
 //        }
-        while (true){
-            System.out.println("Hello world !");
-        }
-    }
-
-    public static void main(String[] args) throws InterruptedException {
+//        while (true){
+//            System.out.println("Hello world !");
+//        }
+//    }
+//
+//    public static void main(String[] args) throws InterruptedException {
 //        MyThread t1 = new MyThread();
 //        System.out.println(t1.getState());
 //        t1.start();
@@ -80,12 +80,25 @@ public class MyThread extends Thread{
 //        t1.start();
 //        t2.start();
 //        t1.interrupt();
-        MyThread myThread = new MyThread();
-        myThread.setDaemon(true);
-        MyThread t1 = new MyThread();
-        t1.start();
-        myThread.start();
-        System.out.println("Main Done");
+//        MyThread myThread = new MyThread();
+//        myThread.setDaemon(true);
+//        MyThread t1 = new MyThread();
+//        t1.start();
+//        myThread.start();
+//        System.out.println("Main Done");
+//    }
+
+    private Counter counter;
+
+    public MyThread(Counter counter){
+        this.counter = counter;
+    }
+
+    @Override
+    public void run() {
+        for (int i = 0; i < 1000; i++){
+            counter.increment();
+        }
     }
 }
 
