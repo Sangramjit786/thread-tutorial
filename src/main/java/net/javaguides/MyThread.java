@@ -2,9 +2,9 @@ package net.javaguides;
 
 public class MyThread extends Thread{
 
-    public MyThread(String name) {
-        super(name);
-    }
+//    public MyThread(String name) {
+//        super(name);
+//    }
 
     @Override
     public void run() {
@@ -43,9 +43,12 @@ public class MyThread extends Thread{
 //            System.out.println("Thread interrupted: " + e);
 //        }
 
-        for (int i = 0; i < 5; i++){
-            System.out.println(Thread.currentThread().getName() + " is running");
-            Thread.yield();
+//        for (int i = 0; i < 5; i++){
+//            System.out.println(Thread.currentThread().getName() + " is running");
+//            Thread.yield();
+//        }
+        while (true){
+            System.out.println("Hello world !");
         }
     }
 
@@ -72,12 +75,20 @@ public class MyThread extends Thread{
 //        l.start();
 //        m.start();
 //        h.start();
-        MyThread t1 = new MyThread("t1");
-        MyThread t2 = new MyThread("t2");
-        t1.start();
-        t2.start();
+//        MyThread t1 = new MyThread("t1");
+//        MyThread t2 = new MyThread("t2");
+//        t1.start();
+//        t2.start();
 //        t1.interrupt();
+        MyThread myThread = new MyThread();
+        myThread.setDaemon(true);
+        MyThread t1 = new MyThread();
+        t1.start();
+        myThread.start();
+        System.out.println("Main Done");
     }
 }
 
-// start(), run(), sleep(), join(), setPriority(), Interrupt, yield
+// start(), run(), sleep(), join(), setPriority(), Interrupt, yield, setDaemon
+
+// DAEMON THREADS
