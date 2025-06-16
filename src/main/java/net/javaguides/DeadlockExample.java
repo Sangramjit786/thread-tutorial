@@ -48,10 +48,10 @@ class Task2 implements Runnable {
 
     @Override
     public void run() {
-//        synchronized (pen){
-//            paper.writeWithPaperAndPen(pen); // thread2 locks paper and tries to lock pen
-//        }
-        paper.writeWithPaperAndPen(pen); // thread2 locks paper and tries to lock pen
+        synchronized (pen){
+            paper.writeWithPaperAndPen(pen); // thread2 locks paper and tries to lock pen
+        }
+//        paper.writeWithPaperAndPen(pen); // thread2 locks paper and tries to lock pen
     }
 }
 
