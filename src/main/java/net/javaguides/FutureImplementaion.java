@@ -8,8 +8,9 @@ public class FutureImplementaion {
 //        Runnable runnable = () -> System.out.println("Hello");
 //        Future<?> future = executorService.submit(runnable);
 //        Future<?> future = executorService.submit(() -> System.out.println("Hello")); // runnable parameter
-        Callable<String> callable = () -> "Hello";
-        Future<?> future = executorService.submit(callable);
+//        Callable<String> callable = () -> "Hello";
+//        Future<?> future = executorService.submit(callable);
+        Future<String> future = executorService.submit(() -> "Hello");
         System.out.println(future.get()); // blocking call ( null )
         if(future.isDone()){
             System.out.println("Task is done !");
